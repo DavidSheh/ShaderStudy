@@ -13,7 +13,7 @@
 			uniform float4 _Color;
 			// base input structs
 			struct vertexInput {
-			float4 vertex : POSITION;
+				float4 vertex : POSITION;
 			};
 			struct vertexOutput {
 				float4 pos : SV_POSITION;
