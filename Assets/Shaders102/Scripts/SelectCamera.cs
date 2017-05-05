@@ -2,7 +2,7 @@
 
 public class SelectCamera : MonoBehaviour {
     public Camera[] cameras;
-    [Range(0, 2)]
+    [Range(0, 3)]
     public int CameraType = 0;
     private int currType;
 
