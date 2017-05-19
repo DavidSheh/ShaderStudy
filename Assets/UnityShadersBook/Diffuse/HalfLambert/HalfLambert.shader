@@ -1,4 +1,4 @@
-﻿Shader "Custom/DiffuseVertex"
+﻿Shader "Custom/HalfLambert"
 {
 	Properties
 	{
@@ -52,7 +52,8 @@
 				// 获取光源在世界空间中的方向
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
 				// 计算漫反射
-				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLightDir));
+				fixed halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5;
+				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * halfLambert;
 				// 最终光照效果 = 环境光（ambient） + 漫反射光（diffuse）
 				fixed3 color = ambient + diffuse;
 
