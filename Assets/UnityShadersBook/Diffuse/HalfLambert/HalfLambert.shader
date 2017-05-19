@@ -28,7 +28,7 @@
 				fixed3 worldNormal : TEXCOORD0;
 			};
 
-			fixed3 _Diffuse;
+			fixed4 _Diffuse;
 			
 			v2f vert (a2v v)
 			{

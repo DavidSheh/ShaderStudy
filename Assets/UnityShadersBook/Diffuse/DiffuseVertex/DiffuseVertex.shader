@@ -1,4 +1,4 @@
-﻿Shader "Custom/DiffusePixel"
+﻿Shader "Custom/DiffuseVertex"
 {
 	Properties
 	{
@@ -28,7 +28,7 @@
 				fixed3 color : COLOR;
 			};
 
-			fixed3 _Diffuse;
+			fixed4 _Diffuse;
 			
 			v2f vert (a2v v)
 			{
