@@ -49,22 +49,31 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
+				float a;
 				float dis = sqrt(pow(i.uv.x, 2) + pow(i.uv.y, 2));
 				if (dis > 0.5 || (dis < _OuterRadius && dis > _InnerRadius)) {
-					discard;
+					//discard;
+					a = 0;
 				}
 				else if (dis >= _OuterRadius && dis <= 0.5)
 				{
 					float theta = atan2(-i.uv.x, -i.uv.y) / (2 * PI) + 0.5;// 起点在上方
 					//float theta = atan2(i.uv.x, i.uv.y) / (2 * PI) + 0.5;// 起点在下方
 
-					if (theta > _FillAmount)
+					/*if (theta > _FillAmount)
 					{
 						discard;
-					}
+					}*/
+
+					a = step(theta, _FillAmount);
+				}
+				else
+				{
+					a = 1;
 				}
 				
-				return fixed4(_BgColor.r, _BgColor.g, _BgColor.b, _BgColor.a);
+				//return fixed4(_BgColor.r, _BgColor.g, _BgColor.b, _BgColor.a);
+				return fixed4(_BgColor.r, _BgColor.g, _BgColor.b, a);
 			}
 			ENDCG
 		}
