@@ -1,4 +1,6 @@
-﻿Shader "Custom/DiffusePixel"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/DiffusePixel"
 {
 	Properties
 	{
@@ -34,7 +36,7 @@
 	{
 		v2f o;
 		// 将顶点从模型空间变换到投影空间
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 
 		// 将法向量从模型空间变换到世界空间
 		o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);

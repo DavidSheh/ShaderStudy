@@ -1,4 +1,6 @@
-﻿Shader "Custom/SpecularVertex"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/SpecularVertex"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 			{
 				v2f o;
 				// 将顶点从模型空间变换到投影空间
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				
 				// 获取环境光（ambient）参数
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;

@@ -1,4 +1,6 @@
-﻿Shader "Custom/CircleRing"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/CircleRing"
 {
 	Properties{
 		_BgColor("Background Color", Color) = (1,1,1,1)
@@ -41,8 +43,8 @@
 			v2f vert(appdata_base v) {
 				v2f o;
 				float4 vert_out = float4(v.vertex.x, v.vertex.y, _DistanceInMeters, 1.0);
-				o.vertex = mul(UNITY_MATRIX_MVP, vert_out);
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(vert_out);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord.xy - fixed2(0.5, 0.5);
 				return o;
 			}
